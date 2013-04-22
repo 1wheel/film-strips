@@ -1,0 +1,13 @@
+webpage
+	find blank d3
+	generate colored bars
+	show images on mouse over (after pause?)
+
+	create thumbnails
+	have them trigger load?
+
+
+
+notes:
+	600 png 700x400 ~ 200 MB
+	600 jpg 700x400 ~ 35 MB

@@ -1,0 +1,41 @@
+body{
+	font-variant:small-caps;
+}
+
+#footer{
+	margin-left: auto ;
+	margin-right: auto ;
+	width:700px;
+}
+
+#main{
+	display: inline;
+	    font-size: 0;
+    letter-spacing: -1px
+
+}
+
+#chart{
+	display: inline;
+}
+
+#img{
+	display: inline;
+	margin-bottom: 98px;
+}
+
+img {margin:0;padding:0}
+
+h1{
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
+
+#instuctions{
+	font-variant:normal;
+	font-size: 90%;
+}
+
+#links{
+	font-variant: normal;
+}
