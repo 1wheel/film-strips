@@ -5,11 +5,9 @@ from subprocess import *
 from PIL import Image
 import json
 
-imgDir = 'movieStills/';
 
-def parseMovie(fileName):
+def parseMovie(fileName, outputDir):
 	frames = 600
-	name = fileName.split(".")[0]
 
 	output = Popen(["ffmpeg", "-i", fileName], stderr=PIPE).communicate()
 	print output
@@ -19,12 +17,12 @@ def parseMovie(fileName):
 	duration = re_duration.search(output[1]).groups()[0]
 
 	seconds = reduce(lambda x,y:x*60+y,map(int,duration.split(":")))
-	rate = frames/seconds
+	rate = frames/float(seconds)
 
 	print "Duration = %s (%i seconds)" % (duration, seconds)
 	print "Capturing one frame every %.1f seconds" % (1/rate)
 
-	output = Popen(["ffmpeg", "-i", fileName, "-r", str(rate), imgDir + name + '%d.jpg']).communicate()
+	output = Popen(["ffmpeg", "-i", fileName, "-r", str(rate), outputDir + '%d.jpg']).communicate()
 
 
 def parseImage(filename):
@@ -49,9 +47,27 @@ def parseImage(filename):
 
 	return str(red) + ',' + str(blue) + ',' + str(green)
 
-colors = []
-for i in range(1,600):
-	colors.append({'rgb':parseImage(imgDir + 'archer' + str(i) + '.jpg'), 'i': i})
 
-with open('colors.json', 'w') as outfile:
-	json.dump(colors, outfile)
+imgDir = 'movieStills/';
+movieDir = 'oscar/'
+
+movieFiles =  os.listdir(movieDir)
+movieJSON = []
+for movie in movieFiles:
+	movieJSON.append(movie.split(".")[0])
+
+print movieJSON
+with open('movies.json', 'w') as outfile:
+		json.dump(movieJSON, outfile)
+
+for movieFile in movieFiles:
+	outputDir = imgDir + movieFile.split(".")[0] + '/'
+	parseMovie(movieDir + movieFile, outputDir)
+	colors = []
+	
+	for i in range(1,600):
+		colors.append({'rgb':parseImage(outputDir + str(i) + '.jpg'), 'i': i})
+
+	with open(outputDir + 'colors.json', 'w') as outfile:
+		json.dump(colors, outfile)
+

@@ -1,22 +1,35 @@
 body{
-	font-variant:small-caps;
+	width: 980px;
+	top: 30px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: auto;
+	margin-top: 10px;
+	font-family: Verdana;
 }
 
-#footer{
-	margin-left: auto ;
-	margin-right: auto ;
-	width:700px;
+#title{
+	font-variant:small-caps;
+	font-size: 135%;
 }
+	
 
 #main{
 	display: inline;
-	    font-size: 0;
+	font-size: 0;
     letter-spacing: -1px
-
 }
 
 #chart{
 	display: inline;
+}
+
+#header{
+	margin-left: 200px;
+	margin-top: 30px;
+	position: absolute;
+	font-size: 150%;
 }
 
 #img{
@@ -31,11 +44,24 @@ h1{
 	margin-bottom: 2px;
 }
 
-#instuctions{
+#footer{
+	margin-left: 200px ;
 	font-variant:normal;
-	font-size: 90%;
+	font-size: 95%;
+	top: 575px;
+	position: absolute;
 }
 
 #links{
 	font-variant: normal;
 }
+
+
+.style-select {
+   width: 340px;
+   height: 34px;
+   overflow: hidden;
+   border: 1px solid #ccc;
+   font-size: 110%;
+
+ }
